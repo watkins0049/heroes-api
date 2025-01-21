@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 public class HeroesService {
 
     public List<String> getAllHeroes() {
-        throw new RuntimeException("Not yet implemented");
+        return List.of("Superman", "Batman");
     }
 
 }

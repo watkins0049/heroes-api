@@ -17,7 +17,7 @@ public class HeroesController {
 
     private final HeroesService heroesService;
 
-    @GetMapping("/heroes")
+    @GetMapping("/api/heroes")
     public ResponseEntity<List<String>> heroes() {
         return ResponseEntity.ok(heroesService.getAllHeroes());
     }
