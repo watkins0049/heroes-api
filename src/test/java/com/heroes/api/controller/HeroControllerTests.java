@@ -19,31 +19,30 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.heroes.api.service.HeroesService;
+import com.heroes.api.service.HeroService;
 
 @DisplayName("class: HeroesController")
-public class HeroesControllerTests {
+public class HeroControllerTests {
 
-    private HeroesService heroesService;
+    private HeroService heroService;
 
     private MockMvc mockMvc;
 
     @BeforeEach
     void beforeEach() {
-        heroesService = mock(HeroesService.class);
-        HeroesController heroesController = new HeroesController(heroesService);
-        mockMvc = MockMvcBuilders.standaloneSetup(heroesController).build();
+        heroService = mock(HeroService.class);
+        HeroController heroController = new HeroController(heroService);
+        mockMvc = MockMvcBuilders.standaloneSetup(heroController).build();
     }
 
     @Nested
     @DisplayName("function: heroes()")
-    class HeroesFunction {
+    class HeroFunction {
 
         @Nested
         @DisplayName("When a call to get all heroes is made then it")
-        class WhenACallToGetAllHeroesIsMade {
+        class WhenACallToGetAllHeroIsMade {
 
             private ResultActions results;
             private List<String> heroes;
@@ -51,8 +50,8 @@ public class HeroesControllerTests {
             @BeforeEach
             void beforeEach() throws Exception {
                 heroes = List.of("Batman", "Superman");
-                doReturn(heroes).when(heroesService).getAllHeroes();
-                results = mockMvc.perform(get("/heroes"));
+                doReturn(heroes).when(heroService).getAllHeroes();
+                results = mockMvc.perform(get("/api/heroes"));
             }
 
             @Test
@@ -64,10 +63,10 @@ public class HeroesControllerTests {
             @Test
             @DisplayName("should return a list of heroes")
             void itShouldReturnAListOfHeroes()
-                    throws UnsupportedEncodingException, JsonMappingException, JsonProcessingException {
+                    throws UnsupportedEncodingException, JsonProcessingException {
                 ObjectMapper mapper = new ObjectMapper();
                 List<String> responseHeroes = mapper.readValue(results.andReturn().getResponse().getContentAsString(),
-                        new TypeReference<List<String>>() {
+                        new TypeReference<>() {
                         });
                 assertThat(responseHeroes).isEqualTo(heroes);
             }

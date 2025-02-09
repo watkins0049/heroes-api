@@ -2,7 +2,7 @@ package com.heroes.api.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 
-import com.heroes.api.service.HeroesService;
+import com.heroes.api.service.HeroService;
 
 import lombok.RequiredArgsConstructor;
 
@@ -13,13 +13,13 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 @RestController
 @RequiredArgsConstructor
-public class HeroesController {
+public class HeroController {
 
-    private final HeroesService heroesService;
+    private final HeroService heroService;
 
     @GetMapping("/api/heroes")
     public ResponseEntity<List<String>> heroes() {
-        return ResponseEntity.ok(heroesService.getAllHeroes());
+        return ResponseEntity.ok(heroService.getAllHeroes());
     }
 
 }
