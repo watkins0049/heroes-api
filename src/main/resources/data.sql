@@ -1,3 +1,4 @@
+TRUNCATE TABLE HERO;
 INSERT INTO HERO (ALIAS, NAME)
     VALUES ('Superman', 'Clark Kent');
 

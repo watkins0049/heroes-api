@@ -3,17 +3,20 @@ package com.heroes.api.store.entity;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.RequiredArgsConstructor;
+import lombok.NoArgsConstructor;
+
 
 @Getter
 @Entity
 @Table(name="HERO")
-@RequiredArgsConstructor
+@AllArgsConstructor
+@NoArgsConstructor
 public class Hero {
 
     @Id
-    private final String alias;
-    private final String name;
+    private String alias;
+    private String name;
 
 }
