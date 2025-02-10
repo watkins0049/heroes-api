@@ -25,12 +25,12 @@ public class HeroServiceTests {
     }
 
     @Nested
-    @DisplayName("function: getAllHeroes()")
+    @DisplayName("function: allHeroAliases()")
     class GetAllHeroesFunction {
         @Nested
         @DisplayName("WHEN all heroes are retrieved" +
                 "THEN it")
-        class WhneAllHeroesAreRetrieved {
+        class WhenAllHeroesAreRetrieved {
 
             private List<String> heroes;
 
@@ -42,7 +42,7 @@ public class HeroServiceTests {
                         .when(repository)
                         .findAll();
 
-                heroes = service.getAllHeroes();
+                heroes = service.allHeroAliases();
             }
 
             @Test

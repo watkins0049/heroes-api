@@ -37,7 +37,7 @@ public class HeroControllerTests {
     }
 
     @Nested
-    @DisplayName("function: heroes()")
+    @DisplayName("function: heroAliases()")
     class HeroFunction {
 
         @Nested
@@ -50,8 +50,8 @@ public class HeroControllerTests {
             @BeforeEach
             void beforeEach() throws Exception {
                 heroes = List.of("Batman", "Superman");
-                doReturn(heroes).when(heroService).getAllHeroes();
-                results = mockMvc.perform(get("/api/heroes"));
+                doReturn(heroes).when(heroService).allHeroAliases();
+                results = mockMvc.perform(get("/api/hero/aliases"));
             }
 
             @Test

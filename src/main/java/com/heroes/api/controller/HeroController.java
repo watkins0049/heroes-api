@@ -17,9 +17,9 @@ public class HeroController {
 
     private final HeroService heroService;
 
-    @GetMapping("/api/heroes")
-    public ResponseEntity<List<String>> heroes() {
-        return ResponseEntity.ok(heroService.getAllHeroes());
+    @GetMapping("/api/hero/aliases")
+    public ResponseEntity<List<String>> heroAliases() {
+        return ResponseEntity.ok(heroService.allHeroAliases());
     }
 
 }

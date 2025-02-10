@@ -13,7 +13,7 @@ public class HeroService {
 
     private final HeroRepository repository;
 
-    public List<String> getAllHeroes() {
+    public List<String> allHeroAliases() {
         return repository.findAll()
                 .stream()
                 .map(Hero::getAlias)
